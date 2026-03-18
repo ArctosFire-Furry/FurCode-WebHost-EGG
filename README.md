@@ -46,14 +46,6 @@ Crée ton serveur, alloue les ressources, et lance le démarrage. La magie opèr
 
 ---
 
-## 📂 Philosophie du Territoire
-
-Contrairement à d'autres collections, FurCode ne t'impose pas une structure rigide. Chaque Egg est construit sur mesure :
-* **Adaptabilité :** L'arborescence est pensée pour respecter les standards de chaque langage/logiciel.
-* **Transparence :** Les fichiers de configuration (Nginx, PHP-FPM, etc.) sont accessibles et optimisés pour le container.
-* **Traçabilité :** Un focus particulier est mis sur la sortie console pour faciliter le debug et la surveillance.
-
----
 
 ## ❓ Foire Aux Questions (FAQ)
 
