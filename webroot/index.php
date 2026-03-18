@@ -182,7 +182,7 @@ $uptime = shell_exec("uptime -p") ?? "Système en ligne";
     </div>
 
     <div class="footer">
-        Propulsé par <a href="https://sigmaprods.dev" target="_blank">sigmaprods.dev</a> <br>
+        Propulsé par ArctosFire <br>
         <span id="time-display">Chargement de l'heure...</span>
     </div>
 </div>
