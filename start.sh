@@ -1,47 +1,52 @@
 #!/bin/ash
 
-# Colors for output
-GREEN="\033[0;32m"
-YELLOW="\033[1;33m"
-RED="\033[0;31m"
-RESET="\033[0m"
+G="\033[38;5;82m"
+Y="\033[38;5;226m"
+R="\033[38;5;196m"
+C="\033[38;5;51m"
+B="\033[38;5;33m"
+O="\033[38;5;202m"
+W="\033[38;5;255m"
+NC="\033[0m"
 
-# Function to print messages with colors
-log_success() {
-    echo -e "${GREEN}[SUCCESS] $1${RESET}"
-}
+clear
+echo -e "${O}┌──────────────────────────────────────────────────┐${NC}"
+echo -e "${O}│${W}                     FurCode                      ${O}│${NC}"
+echo -e "${O}└──────────────────────────────────────────────────┘${NC}"
+echo ""
 
-log_warning() {
-    echo -e "${YELLOW}[WARNING] $1${RESET}"
-}
+log_success() { echo -e "  ${G}[OK]${NC} $1"; }
+log_error() { echo -e "  ${R}[ERREUR]${NC} $1"; }
 
-log_error() {
-    echo -e "${RED}[ERROR] $1${RESET}"
-}
+echo -e "${W}SYSTEME${NC}"
+echo -e "  ${C}Identifiant :${NC} $(hostname)"
+echo -e "  ${C}Plateforme  :${NC} $(uname -sr)"
+echo ""
 
-# Clean up temp directory
-echo "⏳ Cleaning up temporary files..."
-if rm -rf /home/container/tmp/*; then
-    log_success "Temporary files removed successfully."
-else
-    log_error "Failed to remove temporary files."
-    exit 1
-fi
+echo -e "${W}MAINTENANCE${NC}"
+echo -e "  Nettoyage du répertoire temporaire..."
+rm -rf /home/container/tmp/* 2>/dev/null
+log_success "Répertoire purgé."
 
-# Start PHP-FPM
-echo "⏳ Starting PHP-FPM..."
+echo -e "\n${W}SERVICES${NC}"
+echo -e "  Initialisation PHP-FPM..."
 if /usr/sbin/php-fpm8 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize; then
-    log_success "PHP-FPM started successfully."
+    PHP_V=$(/usr/sbin/php-fpm8 -v | head -n 1 | cut -d " " -f 2)
+    log_success "Version ${PHP_V} active."
 else
-    log_error "Failed to start PHP-FPM."
+    log_error "Echec PHP-FPM."
     exit 1
 fi
 
-# NGINX if else WIP
-echo "⏳ Starting Nginx..."
-# Final message
-log_success "Web server is running. All services started successfully."
-/usr/sbin/nginx -c /home/container/nginx/nginx.conf -p /home/container/
+echo -e "\n${W}RESEAU${NC}"
+echo -e "  Démarrage du serveur web..."
+log_success "Serveur opérationnel."
 
-# Keep the container running (optional, depending on your container setup)
-tail -f /dev/null
+echo -e "\n${O}──────────────────────────────────────────────────${NC}"
+echo -e "  ${W}ETAT :${NC}        ${G}Operationnel${NC}"
+echo -e "  ${W}ADRESSE :${NC}     ${B}${SERVER_IP:-127.0.0.1}:${SERVER_PORT:-80}${NC}"
+echo -e "  ${W}HORODATAGE :${NC}  $(date '+%d/%m/%Y %H:%M:%S')"
+echo -e "${O}──────────────────────────────────────────────────${NC}"
+echo ""
+
+/usr/sbin/nginx -c /home/container/nginx/nginx.conf -p /home/container/
