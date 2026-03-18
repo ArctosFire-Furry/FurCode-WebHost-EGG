@@ -1,7 +1,7 @@
 # 🦊 FurCode — WebHost 🚀
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Version-1.0.2-FF9800?style=for-the-badge&logo=github" alt="Version">
+  <img src="https://img.shields.io/badge/Version-1.0.0-FF9800?style=for-the-badge&logo=github" alt="Version">
   <img src="https://img.shields.io/badge/Stack-Nginx_%7C_PHP--FPM_8.x-4F5B93?style=for-the-badge&logo=php" alt="PHP">
   <img src="https://img.shields.io/badge/Furry-Community_Driven-white?style=for-the-badge&logo=pawprint&logoColor=orange" alt="Furry">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
