@@ -24,7 +24,6 @@ Voici les différents environnements que tu peux déployer actuellement :
 | Nom de l'Egg | Description | Stack Technique | État |
 | :--- | :--- | :--- | :--- |
 | **[🌐 WebHost](./Eggs/WebHost/)** | Hébergement web complet avec page d'accueil dynamique. | Nginx + PHP 8.x | ✅ Stable |
-| **[📦 Node.js App](./Eggs/NodeJS/)** | *Prochainement : Pour tes applications JS modernes.* | Node.js | 🏗️ En dev |
 
 > [!TIP]
 > **Le savais-tu ?** Tous nos Eggs intègrent le **Git-Sync** pour déployer ton code automatiquement depuis GitHub/GitLab à chaque démarrage !
